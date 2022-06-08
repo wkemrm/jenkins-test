@@ -31,7 +31,7 @@ pipeline {
             }
         }
         
-        stage('Bulid Backend') {
+        stage('Build Backend') {
           agent any
           steps {
             echo 'Build Backend'
@@ -43,6 +43,29 @@ pipeline {
           }
 
           post {
+            success {
+              echo 'Successfully Cloned Repository'
+            }
+            failure {
+              error 'This pipeline stops here...'
+            }
+          }
+        }
+
+        stage('build image Backend') {
+          agent any
+          steps {
+            echo 'build image Backend'
+
+            dir ('./backend') {
+                sh 'docker build -t wkemrm12/docker-backend ./'
+            }
+          }
+
+          post {
+            success {
+              echo 'Successfully Cloned Repository'
+            }
             failure {
               error 'This pipeline stops here...'
             }
