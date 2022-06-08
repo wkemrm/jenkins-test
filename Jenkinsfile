@@ -37,6 +37,7 @@ pipeline {
             echo 'Build Backend'
 
             dir ('./backend'){
+                sh 'chmod +x gradlew'
                 sh './gradlew clean build'
             }
           }
