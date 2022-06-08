@@ -37,7 +37,7 @@ pipeline {
             echo 'Build Backend'
 
             dir ('./backend'){
-                sh 'gradlew clean build'
+                sh './gradlew clean build'
             }
           }
 
